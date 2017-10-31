@@ -3,19 +3,6 @@
 import scrapy
 
 
-# class QuotesSpider(scrapy.Spider):
-#     name = "aaa"
-#     start_urls = [
-#         'http://quotes.toscrape.com/page/1/',
-#        # 'http://quotes.toscrape.com/page/2/',
-#     ]
-
-#     def parse(self, response):
-#         page = response.url.split("/")[-2]
-#         filename = 'quotes-%s.html' % page
-#         with open(filename, 'wb') as f:
-#             f.write(response.body)
-
 class QuotesSpider(scrapy.Spider):
     name = "aaa"
     start_urls = [
@@ -24,19 +11,32 @@ class QuotesSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-    	page = response.url.split("/")[-2]
+        page = response.url.split("/")[-2]
         filename = 'quotes-%s.html' % page
         with open(filename, 'wb') as f:
-            #f.write(response.body)
-	        for quote in response.css('.text'):
-	        	yield{
+            f.write(response.body)
 
-                	'text' : quote.css('::text').extract()
-	        	}
-            next_page = response.css('li.next a::attr(href)').extract_first()
-	        if next_page is not None:
-	            next_page = response.urljoin(next_page)
-	            yield scrapy.Request(next_page, callback=self.parse)
+# class QuotesSpider(scrapy.Spider):
+#     name = "aaa"
+#     start_urls = [
+#         'http://quotes.toscrape.com/page/1/',
+#        # 'http://quotes.toscrape.com/page/2/',
+#     ]
+
+#     def parse(self, response):
+#     	page = response.url.split("/")[-2]
+#         filename = 'quotes-%s.html' % page
+#         with open(filename, 'wb') as f:
+#             #f.write(response.body)
+# 	        for quote in response.css('.text'):
+# 	        	yield{
+
+#                 	'text' : quote.css('::text').extract()
+# 	        	}
+#             next_page = response.css('li.next a::attr(href)').extract_first()
+# 	        if next_page is not None:
+# 	            next_page = response.urljoin(next_page)
+# 	            yield scrapy.Request(next_page, callback=self.parse)
 
 
 # class AuthorSpider(scrapy.Spider):
