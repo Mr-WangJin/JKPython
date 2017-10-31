@@ -3,7 +3,7 @@ import socket
 print help(socket.socket.accept)
 
 if __name__ == "__main__":
-    s = socket.socket()
+s = socket.socket()
     host = '127.0.0.1'
     print host
 
@@ -14,6 +14,6 @@ if __name__ == "__main__":
     while True:
         c, addr = s.accept()
         print help(socket.accept)
-    	print '连接地址：', addr
+        print '连接地址：', addr
         c.send('欢迎访问菜鸟教程！')
         c.close()
