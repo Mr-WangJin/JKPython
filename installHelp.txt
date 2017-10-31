@@ -1,0 +1,9 @@
+安装Anaconda会出现白色框
+原因：代码不符合PEP8格式要求
+导致自动补全的anaconda插件提示框框
+
+解决办法：Sublime>Perferences>Package Settings>Anaconda>Setting User
+增加一句配置 {"anaconda_linting":false}
+
+
+
