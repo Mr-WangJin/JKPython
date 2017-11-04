@@ -6,9 +6,12 @@ from tutorial.items import StockPriceItem
 class StockPriceSpider(scrapy.Spider):
     name = "StockPriceSpider"
 
-    start_urls = [
-        'https://gupiao.baidu.com/stock/sh600111.html',
-    ]
+    def __init__(self, *args, **kwargs):
+        self.start_urls = [args[0],]
+
+    # start_urls = [
+    #     'https://gupiao.baidu.com/stock/sh600111.html',
+    # ]
 
     def parse(self, response):
         items = []
