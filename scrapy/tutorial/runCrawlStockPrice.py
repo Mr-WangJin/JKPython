@@ -10,6 +10,11 @@ from scrapy.utils.project import get_project_settings
 
 def main(tupleParam):
 	try:
+		setting = get_project_settings()
+
+		print(setting.__class__)
+		print(isinstance(setting, dict))
+		print '--------------------'
 		process = CrawlerProcess(get_project_settings())
 		process.crawl(StockPriceSpider, tupleParam)
 		process.start() # the script will block here until the crawling is finished
