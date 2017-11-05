@@ -11,5 +11,10 @@ import scrapy
 class StockPriceItem(scrapy.Item):
     # define the fields for your item here like:
     price = scrapy.Field()
+    code = scrapy.Field()
+
+    def printName(self):
+        print(__name__)
+
 
     
